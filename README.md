@@ -1,4 +1,4 @@
-# ROV HiL and SiL
+# SquidLink
 
 [![Code: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/Code-PolyForm_Noncommercial_1.0.0-purple.svg)](LICENSE-POLYFORM-NonCommercial-1.0.0.txt)
 [![Documentation: CC BY-NC-SA 4.0](https://img.shields.io/badge/Documentation-CC_BY--NC--SA_4.0-purple.svg)](LICENSE-CC-BY-NC-SA-4.0.txt)
@@ -10,54 +10,80 @@
   <img src="docs/images/squidlink-architecture.svg" alt="SquidLink simulation architecture" width="900">
 </p>
 
-SquidLink is the independent simulation and integration-test environment for
-the ROV. It provides the ROS 2 and Gazebo software-in-the-loop environment,
-together with the hardware-in-the-loop bridge used to exercise the same
-application-facing interfaces before connecting real hardware.
+SquidLink is the independent simulation and integration-test environment for the robot projects. Its primary purpose is to provide a ROS 2 and Gazebo software-in-the-loop (SiL) environment and, later, a hardware-in-the-loop (HiL) environment that exercises the same application-facing interfaces as the real robot.
 
-SquidLink works alongside the other ROV projects:
+SquidLink is deliberately separate from the robot runtime and physical hardware repositories:
 
-- [CuttleOS](https://github.com/PhilipMcGaw/robot-CuttleOS) runs the Cockpit,
-  Control and Datalogger services on the robot Raspberry Pi.
-- [NautiPi](https://github.com/PhilipMcGaw/robot-NautiPi) contains the physical
-  electronics, hardware and Arduino project material.
+- **CuttleOS** owns the robot-side software, including Cockpit, Control, and Datalogger.
+- **SquidLink** owns simulation, ROS 2/Gazebo integration, scenarios, and simulation-side test infrastructure.
+- **NautiPi** owns physical electronics, PCB designs, embedded hardware projects, and associated hardware reference material.
 
-The projects remain separate. SquidLink must use the same NATS contracts as the
-real ROV, but it must not become the source of truth for the physical robot or
-replace the CuttleOS runtime services.
-
-## People who have helped
-
-- Philip 'Skippy' McGaw - <philip@mcgaw.eu> - [philipmcgaw.com](https://philipmcgaw.com)
-- Tamarisk 'NotQuiteHere' McGaw - <tamarisk@mcgaw.eu> - [tamarisk.it](https://tamarisk.it)
-- Bob 'thinkl33t' Clough - <bob@clough.me> - [thinkl33t.co.uk](https://thinkl33t.co.uk)
+The three repositories are connected by documented interfaces. SquidLink is not the source of truth for CuttleOS implementation or NautiPi hardware allocation.
 
 ## Architecture
+
 ```text
-Cockpit ── NATS Core ── Control ── NATS Core ── HiL bridge ── ROS 2 ── Gazebo
-                                      ▲                 │
-                                      └── telemetry ────┘
+                 Robot application boundary
+
+     Cockpit ───────────┐
+                         │
+     Control ────────────┼── NATS Core ── NATS/ROS 2 bridge ── ROS 2 ── Gazebo
+                         │                                      │
+     Datalogger ─────────┘                                      ▼
+                                                         Simulated vehicle
+                                                               │
+                                                        Simulated sensors
 ```
 
-The simulation must remain behind the same application-facing NATS Core contract as the real ROV. ROS 2 and Gazebo are implementation details of the simulation environment.
+NATS Core is the application-facing communication boundary. ROS 2 and Gazebo are implementation technologies inside SquidLink and MUST NOT become dependencies of CuttleOS services merely because they are used for simulation.
+
+The simulator receives application commands, applies them to the simulated vehicle, and publishes simulated telemetry back through the same NATS contract. Control and safety logic remains in CuttleOS rather than being duplicated inside the simulator.
+
+## Software-in-the-loop and hardware-in-the-loop
+
+### Software-in-the-loop
+
+SiL runs without the physical robot. CuttleOS services may be run separately in a development environment, while SquidLink provides the simulated vehicle and its ROS 2/Gazebo environment.
+
+### Hardware-in-the-loop
+
+HiL allows selected real hardware or software components to operate against the simulated vehicle. HiL is an architectural capability and is not currently evidence of physical validation unless an explicit test record says otherwise.
+
+Both modes MUST use the same application-facing NATS contracts. Simulation-specific subjects MUST NOT be introduced merely to avoid implementing the real interface.
 
 ## Repository layout
 
-- `ros2_ws/` — colcon workspace and ROS packages
+- `ros2_ws/` — authoritative ROS 2 colcon workspace
 - `configs/` — simulator and bridge configuration
-- `scenarios/` — repeatable test scenarios and expected outcomes
-- `tests/` — integration and scenario tests
-- `docs/` — environment and simulation documentation
-- `scripts/` — utility scripts for setup and testing
+- `scenarios/` — repeatable simulation and integration-test scenarios
+- `tests/` — automated and scenario-related tests
+- `docs/` — maintained technical documentation
+- `scripts/` — repository utilities
 - `vehicles/` — vehicle-specific simulation content
-- `ROS Course Material Notes/` — retained learning and setup notes
+- `ROS Course Material Notes/` — retained ROS learning and setup material
+
+## Development environment
+
+The currently documented target environment is:
+
+- Ubuntu 24.04 LTS, AMD64
+- ROS 2 Jazzy
+- Gazebo Harmonic
+
+The environment may be hosted in a virtual machine or on dedicated Ubuntu hardware. The virtualisation technology is not part of the application architecture.
+
+## Documentation
+
+Start with [`docs/README.md`](docs/README.md). The architectural source of truth is `MASTER_CONTEXT.md`; the documentation policy is `docs/documentation-policy.md`.
+
+Documentation MUST distinguish implemented behaviour from automated-test verification, bench testing, production validation, and planned or unverified work. A successful simulation does not constitute physical or production validation.
 
 ## Key project files
 
-- `MASTER_CONTEXT.md` — comprehensive architectural and engineering context
-- `CONTRIBUTING.md` — contributor guidance and development practices
+- `MASTER_CONTEXT.md` — architectural and engineering context
+- `CONTRIBUTING.md` — contributor guidance
+- `docs/architecture.md` — concise system architecture
+- `docs/nats-contract.md` — application-facing NATS contract guidance
+- `docs/status.md` — current implementation and validation status
+- `docs/documentation-policy.md` — documentation style and currency requirements
 - `LICENSES.md` — licensing information
-
-## Current status
-
-The repository is scaffolded with initial ROS packages and Gazebo model structure. See [docs/README.md](docs/README.md) for detailed documentation.
