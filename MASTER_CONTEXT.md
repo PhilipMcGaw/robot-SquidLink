@@ -8,6 +8,8 @@ SquidLink is the independent simulation and integration-test environment for the
 
 SquidLink is not the robot runtime, and it is not the physical hardware repository. It must remain usable without the physical robot.
 
+The cross-repository system architecture is authoritative in CuttleOS [`docs/system-architecture.md`](https://github.com/PhilipMcGaw/robot-CuttleOS/blob/main/docs/system-architecture.md). This document remains authoritative for SquidLink-specific simulation architecture, development conventions, and validation status.
+
 ## 2. Repository boundaries
 
 The current project is organised around three repositories:
@@ -57,6 +59,8 @@ HiL allows selected real hardware or software components to operate against the 
 HiL MUST use the same application-facing NATS contracts as the real robot. A simulation-specific application protocol must not be introduced merely to simplify integration.
 
 HiL capability is not evidence of physical or production validation. Any physical validation must have explicit test evidence.
+
+See [`docs/sil-hil.md`](docs/sil-hil.md) for the formal SiL/HiL boundary and evidence model.
 
 ## 5. Application responsibilities
 
