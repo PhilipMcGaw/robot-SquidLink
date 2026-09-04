@@ -72,6 +72,10 @@ The currently documented target environment is:
 
 The environment may be hosted in a virtual machine or on dedicated Ubuntu hardware. The virtualisation technology is not part of the application architecture.
 
+## Testbot simulation
+
+The initial Testbot simulation framework is documented in [`vehicles/testbot/`](vehicles/testbot/). It is deliberately staged after the physical CAD and wiring record in robot-NautiPi; no digital twin is claimed yet.
+
 ## Documentation
 
 Start with [`docs/README.md`](docs/README.md). The architectural source of truth is `MASTER_CONTEXT.md`; the documentation policy is `docs/documentation-policy.md`.

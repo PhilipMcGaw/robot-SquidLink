@@ -2,6 +2,8 @@
 
 This directory contains vehicle-specific simulation content for different robot types.
 
+The initial vehicle framework includes [`testbot/`](testbot/), which is intentionally a planning boundary and does not yet claim a complete digital twin.
+
 Each vehicle subdirectory should contain:
 - Hull geometry
 - Mass and inertia properties

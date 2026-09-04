@@ -25,6 +25,7 @@ Cockpit provides control. Internal application communication uses NATS Core. Cam
 | [Day 7 — Sensors and Camera](07-sensors-and-camera.md) | IMU, depth, heading and simulated camera |
 | [Day 8 — NATS ↔ ROS 2 Bridge](08-nats-ros2-bridge.md) | Application contract mapped to ROS 2 without exposing ROS to Cockpit/Control |
 | [Day 9 — HiL/SiL Scenarios](09-hil-sil-scenarios.md) | Repeatable integration tests and evidence |
+| [Day 10 — Testbot: Physical Build to ROS 2](10-testbot-physical-to-ros2.md) | Testbot working example from physical record to ROS 2 description |
 
 
 ## Exit-criteria principle
@@ -42,7 +43,7 @@ Historical material has been removed from the main learning path where it duplic
 ## Dependencies
 
 ```text
-Day 0 → Day 0.5 → Day 1 → Day 2 → Day 3 → Day 4 → Day 5 → Day 6 → Day 7
+Day 0 → Day 0.5 → Day 1 → Day 2 → Day 3 → Day 4 → Day 5 → Day 6 → Day 7 → Day 10
 ```
 
 Day 0.5 is deliberately before Day 6 so NATS networking is understood independently of ROS integration.

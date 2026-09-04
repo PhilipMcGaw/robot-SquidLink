@@ -6,9 +6,9 @@ The repository currently provides the documented project boundary and supporting
 
 The repository includes:
 
-- an authoritative ROS 2 workspace under `ros2_ws/`;
+- an authoritative ROS 2 workspace under `ros2_ws/`, including the provisional `testbot_description` working example;
 - simulation configuration under `configs/`;
-- vehicle-specific simulation space under `vehicles/`;
+- vehicle-specific simulation space under `vehicles/`, including the initial Testbot planning boundary;
 - scenario and integration-test space under `scenarios/`;
 - documentation covering the simulation architecture, NATS/ROS 2 boundary, Gazebo, testing, logging, camera integration, timing, and safety;
 - ROS course material for development and training;
@@ -35,6 +35,7 @@ A successful ROS 2/Gazebo simulation, automated scenario, or software integratio
 The following remain subject to implementation and explicit evidence:
 
 - complete ROV vehicle simulation;
+- complete Testbot vehicle simulation or digital-twin validation;
 - production-quality NATS/ROS 2 bridge execution;
 - repeatable end-to-end scenarios;
 - sufficiently realistic vehicle physics for the intended verification purpose;

@@ -205,7 +205,7 @@ Gazebo and RViz2 remain useful for development, debugging, and visual inspection
 
 ## 13. Current status
 
-SquidLink currently provides the repository structure, ROS 2/Gazebo integration boundary, documentation framework, course material, and initial simulation scaffolding. The complete ROV simulation, production-quality NATS/ROS 2 bridge, repeatable vehicle scenarios, and physical HiL validation remain unverified unless explicit evidence is recorded elsewhere in the repository.
+SquidLink currently provides the repository structure, ROS 2/Gazebo integration boundary, documentation framework, course material, and initial simulation scaffolding, including the provisional `testbot_description` ROS 2 working example. The complete ROV simulation, production-quality NATS/ROS 2 bridge, repeatable vehicle scenarios, and physical HiL validation remain unverified unless explicit evidence is recorded elsewhere in the repository.
 
 The ROS course material is learning and setup material, not authoritative architecture documentation.
 
