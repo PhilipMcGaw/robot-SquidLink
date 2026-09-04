@@ -59,10 +59,11 @@ Both modes MUST use the same application-facing NATS contracts. Simulation-speci
 - `configs/` — simulator and bridge configuration
 - `scenarios/` — repeatable simulation and integration-test scenarios
 - `tests/` — automated and scenario-related tests
-- `docs/` — maintained technical documentation
+- `docs/` — maintained SquidLink-specific technical documentation
 - `scripts/` — repository utilities
 - `vehicles/` — vehicle-specific simulation content
-- `ROS Course Material Notes/` — retained ROS learning and setup material
+
+General ROS 2 learning material is maintained exclusively in [Chartroom](https://chartroom.philipmcgaw.com/), under its ROS 2 course. SquidLink contains the implementation and configuration required to apply that knowledge to the simulation environment; it does not duplicate the course.
 
 ## Development environment
 
@@ -80,7 +81,7 @@ The initial Testbot simulation framework is documented in [`vehicles/testbot/`](
 
 ## Documentation
 
-Start with [`docs/README.md`](docs/README.md) for SquidLink-specific documentation. For cross-project architecture, engineering decisions, reusable guidance, and the overall roadmap, see [Chartroom](https://chartroom.philipmcgaw.com/).
+Start with [`docs/README.md`](docs/README.md) for SquidLink-specific documentation. For cross-project architecture, engineering decisions, reusable guidance, ROS 2 learning material, and the overall roadmap, see [Chartroom](https://chartroom.philipmcgaw.com/).
 
 Documentation MUST distinguish implemented behaviour from automated-test verification, bench testing, production validation, and planned or unverified work. A successful simulation does not constitute physical or production validation.
 
