@@ -20,7 +20,7 @@ Complete Days 0–5 and have the SquidLink ROS 2 workspace available. The target
 
 ```zsh
 source /opt/ros/jazzy/setup.zsh
-cd "$HOME/robots/ROV---HiL-and-SiL/ros2_ws"
+cd "$HOME/robots/robot-SquidLink/ros2_ws"
 ```
 
 Use the actual repository path if it differs. Run `colcon` from the workspace root, not from `src/`.

@@ -10,7 +10,7 @@ The course is deliberately build-and-prove oriented. Each day introduces one lay
 
 The HiL/SiL repository runs independently in an Ubuntu VM or dedicated Ubuntu machine. The physical ROV and Raspberry Pi controller are initially out of scope. Later, a real Raspberry Pi robot may exchange the same NATS data with the HiL/SiL environment.
 
-Cockpit provides control. Internal application communication uses NATS Core. Camera/video is carried by the appropriate HTTP/video interface rather than NATS. Datalogger is a separate repository and is not implemented here; it records sensor/operational data and may ultimately record NATS traffic as a black-box recorder. JetStream is not part of the system.
+Cockpit provides control. Internal application communication uses NATS Core. Camera/video is carried by the appropriate HTTP/video interface rather than NATS. Datalogger belongs to CuttleOS and is outside this simulation repository; SquidLink may produce simulation-specific evidence and test output. JetStream is not part of the system.
 
 ## Course order
 

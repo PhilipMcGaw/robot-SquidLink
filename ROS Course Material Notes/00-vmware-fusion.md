@@ -421,7 +421,7 @@ The private key must remain inside the VM and must never be committed to the rep
 Clone the repository into the current user's home directory using `$HOME` rather than a hard-coded username:
 
 ```bash
-git clone <repository-ssh-url> "$HOME/robots/ROV---HiL-and-SiL"
+git clone <repository-ssh-url> "$HOME/robots/robot-SquidLink"
 ```
 
 The ROS workspace should live inside the HIL/SIL repository rather than as a separate workspace in the user's home directory.
@@ -429,7 +429,7 @@ The ROS workspace should live inside the HIL/SIL repository rather than as a sep
 A suitable layout is:
 
 ```text
-ROV---HiL-and-SiL/
+robot-SquidLink/
 ├── README.md
 ├── configs/
 ├── docs/
@@ -637,7 +637,7 @@ VMware Fusion
     ├── colcon / rosdep / vcstool
     ├── Git / SSH
     ├── NATS client
-    └── ~/robots/ROV---HiL-and-SiL
+    └── ~/robots/robot-SquidLink
 ```
 
 

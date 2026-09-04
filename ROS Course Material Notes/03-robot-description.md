@@ -73,13 +73,13 @@ This exercise does not test:
 The workspace path is:
 
 ```text
-~/ROV - HiL-and-SiL/ros2_ws
+~/robot-SquidLink/ros2_ws
 ```
 
 Because the repository name contains spaces, shell commands use:
 
 ```zsh
-"$HOME/ROV - HiL-and-SiL/..."
+"$HOME/robot-SquidLink/..."
 ```
 
 Keep the quotation marks.
@@ -165,8 +165,8 @@ Do not run the package-creation command again if the package already exists.
 Run these commands from the **workspace root**:
 
 ```zsh
-mkdir -p "$HOME/ROV - HiL-and-SiL/ros2_ws/src"
-cd "$HOME/ROV - HiL-and-SiL/ros2_ws/src"
+mkdir -p "$HOME/robot-SquidLink/ros2_ws/src"
+cd "$HOME/robot-SquidLink/ros2_ws/src"
 source /opt/ros/jazzy/setup.zsh
 
 ros2 pkg create \
@@ -177,7 +177,7 @@ ros2 pkg create \
 
 After that, for colcon, return to the workspace root:
 ```text
-cd "$HOME/ROV - HiL-and-SiL/ros2_ws"
+cd "$HOME/robot-SquidLink/ros2_ws"
 colcon list
 ```
 
@@ -201,7 +201,7 @@ the package contains no C++ or Python nodes.
 Create directories for the robot description and launch file:
 
 ```zsh
-cd "$HOME/ROV - HiL-and-SiL/ros2_ws/src/small_robot_description"
+cd "$HOME/robot-SquidLink/ros2_ws/src/small_robot_description"
 mkdir -p launch urdf
 ```
 
@@ -234,10 +234,10 @@ Always run `colcon build` from the **workspace root**:
 
 ```text
 Correct:
-~/ROV - HiL-and-SiL/ros2_ws
+~/robot-SquidLink/ros2_ws
 
 Incorrect:
-~/ROV - HiL-and-SiL/ros2_ws/src
+~/robot-SquidLink/ros2_ws/src
 ```
 
 Colcon creates `build/`, `install/` and `log/` alongside `src/`.
@@ -245,7 +245,7 @@ Colcon creates `build/`, `install/` and `log/` alongside `src/`.
 Check that colcon can see the package before continuing:
 
 ```zsh
-cd "$HOME/ROV - HiL-and-SiL/ros2_ws"
+cd "$HOME/robot-SquidLink/ros2_ws"
 colcon list
 ```
 
@@ -434,7 +434,7 @@ This catches malformed XML and Xacro expressions before a launch failure
 obscures the cause.
 
 ```zsh
-cd "$HOME/ROV - HiL-and-SiL/ros2_ws"
+cd "$HOME/robot-SquidLink/ros2_ws"
 source /opt/ros/jazzy/setup.zsh
 
 ros2 run xacro xacro \
@@ -596,7 +596,7 @@ Build only this package on the first run.
 Run colcon from the **workspace root**, not from `src/`.
 
 ```zsh
-cd "$HOME/robots/ROV---HiL-and-SiL/ros2_ws"
+cd "$HOME/robots/robot-SquidLink/ros2_ws"
 source /opt/ros/jazzy/setup.zsh
 
 colcon list
@@ -624,7 +624,7 @@ Open a second terminal:
 
 ```zsh
 source /opt/ros/jazzy/setup.zsh
-source "$HOME/robots/ROV---HiL-and-SiL/ros2_ws/install/setup.zsh"
+source "$HOME/robots/robot-SquidLink/ros2_ws/install/setup.zsh"
 
 rviz2
 ```
@@ -681,7 +681,7 @@ Open a third terminal with both environments sourced:
 
 ```zsh
 source /opt/ros/jazzy/setup.zsh
-source "$HOME/robots/ROV---HiL-and-SiL/ros2_ws/install/setup.zsh"
+source "$HOME/robots/robot-SquidLink/ros2_ws/install/setup.zsh"
 ```
 
 Run:
@@ -738,7 +738,7 @@ Run:
 source /opt/ros/jazzy/setup.zsh
 
 ros2 run xacro xacro \
-  "$HOME/robots/ROV---HiL-and-SiL/ros2_ws/src/small_robot_description/urdf/small_robot.urdf.xacro" \
+  "$HOME/robots/robot-SquidLink/ros2_ws/src/small_robot_description/urdf/small_robot.urdf.xacro" \
   > /tmp/small_robot.urdf
 ```
 
@@ -925,7 +925,7 @@ or hardware integration until the basic Gazebo simulation is reliable.
 | Symptom | Likely cause | Check or correction |
 | --- | --- | --- |
 | `ros2: command not found` | Jazzy is not sourced. | Run `source /opt/ros/jazzy/setup.zsh`. |
-| `colcon list` returns no packages | The package is not under `ros2_ws/src/`, or colcon was run from the wrong directory. | Run `cd "$HOME/robots/ROV---HiL-and-SiL/ros2_ws"` and check the package location. |
+| `colcon list` returns no packages | The package is not under `ros2_ws/src/`, or colcon was run from the wrong directory. | Run `cd "$HOME/robots/robot-SquidLink/ros2_ws"` and check the package location. |
 | `Package 'small_robot_description' not found` | The package was not built or the overlay is not sourced. | Run `colcon build --packages-select small_robot_description`, then `source install/setup.zsh`. |
 | `xacro: command not found` | The Xacro package is missing. | Install `ros-jazzy-xacro`. |
 | `ros2 launch` cannot find the launch file | `launch/` and `urdf/` were not installed. | Check `CMakeLists.txt`, rebuild, and source the overlay again. |
@@ -943,7 +943,7 @@ If the workspace has become confused by an earlier package layout or stale
 build output:
 
 ```zsh
-cd "$HOME/robots/ROV---HiL-and-SiL/ros2_ws"
+cd "$HOME/robots/robot-SquidLink/ros2_ws"
 
 rm -rf build install log
 
@@ -956,13 +956,13 @@ If an accidental `src/install` directory was created, remove only that
 accidental directory:
 
 ```zsh
-rm -rf "$HOME/robots/ROV---HiL-and-SiL/ros2_ws/src/install"
+rm -rf "$HOME/robots/robot-SquidLink/ros2_ws/src/install"
 ```
 
 Then return to the workspace root and rebuild:
 
 ```zsh
-cd "$HOME/robots/ROV---HiL-and-SiL/ros2_ws"
+cd "$HOME/robots/robot-SquidLink/ros2_ws"
 
 colcon build --packages-select small_robot_description
 

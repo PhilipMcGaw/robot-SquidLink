@@ -56,3 +56,6 @@ The current repository state should therefore be treated as simulation infrastru
 - `vehicles/`
 - `scenarios/`
 - `tests/`
+
+
+Documentation audit reference: docs/scenario-testing.md
