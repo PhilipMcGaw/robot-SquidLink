@@ -22,6 +22,10 @@ Cross-project architecture, engineering rationale, significant decisions, reusab
 
 The three engineering repositories are connected by documented interfaces. SquidLink is not the source of truth for CuttleOS implementation or NautiPi hardware allocation; Chartroom provides the cross-project engineering context.
 
+## Documentation standard
+
+Project-wide documentation conventions are defined by the [Robots Project Documentation Standard](https://chartroom.philipmcgaw.com/development/documentation-standard/), maintained in Chartroom. SquidLink follows that standard and does not maintain a separate copy of the project-wide documentation rules.
+
 ## Architecture
 
 ```text
