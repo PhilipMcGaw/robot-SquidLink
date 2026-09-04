@@ -35,18 +35,9 @@ SquidLink documentation describes the simulation and integration-test environmen
 
 ## ROS course material
 
-The course material is learning and setup material, not authoritative architecture documentation.
+The ROS 2 / Gazebo course is maintained exclusively in [Chartroom](https://chartroom.philipmcgaw.com/). It is reusable learning material rather than SquidLink implementation documentation.
 
-- [Course index](../ROS%20Course%20Material%20Notes/INDEX.md)
-- [Day 1 — Environment](../ROS%20Course%20Material%20Notes/01-environment.md)
-- [Day 2 — NATS networking](../ROS%20Course%20Material%20Notes/02-nats-networking.md)
-- [Day 3 — Robot description](../ROS%20Course%20Material%20Notes/03-robot-description.md)
-- [Day 4 — ROS 2 fundamentals](../ROS%20Course%20Material%20Notes/04-ros2-fundamentals.md)
-- [Day 5 — Gazebo](../ROS%20Course%20Material%20Notes/05-gazebo.md)
-- [Day 6 — Vehicle model](../ROS%20Course%20Material%20Notes/06-vehicle-model.md)
-- [Day 7 — Sensors and camera](../ROS%20Course%20Material%20Notes/07-sensors-and-camera.md)
-- [Day 8 — NATS and ROS 2](../ROS%20Course%20Material%20Notes/08-nats-ros2-bridge.md)
-- [Day 9 — HiL/SiL tests](../ROS%20Course%20Material%20Notes/09-hil-sil-scenarios.md)
+SquidLink documents the implementation, configuration, scenarios, and tests that apply the course material to this simulation environment.
 
 ## Documentation control
 
